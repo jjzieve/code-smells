@@ -19,8 +19,8 @@ namespace CodeSmells
             // var evil = new EvilDataClassClient(dc);
             // Console.WriteLine(dc);
 
-
             var betterDc = new BetterishDataClass("not evil", "I promise");
+            Console.WriteLine($"dc: {betterDc}");
             // betterDc.PropertyA = "evil";
             var betterDc2 = betterDc
                 .AddStuffToPropA(", jk kinda evil")
