@@ -4,6 +4,14 @@
 
 namespace CodeSmells
 {
+    public class EvilDataClassClient
+    {
+        public EvilDataClassClient(DataClass dc)
+        {
+            dc.PropertyA = "I'm evil!";
+        }
+    }
+
     // Only public properties with getters and setterns
     public class DataClass
     {
