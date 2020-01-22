@@ -1,18 +1,27 @@
 using System;
+using System.Text.RegularExpressions;
 
 namespace CodeSmells
 {
     public class PrimitiveEmployee
     {
         public string ZipCode { get; set; } // woops, added set on accident!
-        // https://enterprisecraftsmanship.com/posts/functional-c-primitive-obsession/
-        public decimal Salary { get; } // should this be domain modeled?
 
-        public PrimitiveEmployee(string zipCode, decimal salary)
+        // https://enterprisecraftsmanship.com/posts/functional-c-primitive-obsession/
+        // public decimal Salary { get; }  // should all fields be be domain modeled?
+
+        public PrimitiveEmployee(string zipCode)
         {
-            Console.WriteLine("Employee regex validation for XXXXX or XXXXX-XXXX format");
+            if (!Regex.Match(zipCode, @"\d{5}([ \-]\d{4})?$").Success)
+            {
+                throw new ArgumentException($"Failed employee zip code regex validation, \"{zipCode}\" is not in XXXXX or XXXXX-XXXX format");
+            }
             ZipCode = zipCode;
-            Salary = salary;
+        }
+
+        public override string ToString()
+        {
+            return $"PrimitiveEmployee(zip: {ZipCode})";
         }
     }
 
@@ -23,7 +32,10 @@ namespace CodeSmells
 
         public ZipCode(string value)
         {
-            Console.WriteLine("ZipCode regex validation for XXXXX or XXXXX-XXXX format");
+            if (!Regex.Match(value, @"\d{5}([ \-]\d{4})?$").Success)
+            {
+                throw new ArgumentException($"Failed zip code regex validation, \"{value}\" is not in XXXXX or XXXXX-XXXX format");
+            }
             _value = value;
         }
 
@@ -41,12 +53,15 @@ namespace CodeSmells
     public class SophisticatedEmployee
     {
         public ZipCode ZipCode { get; set; } // woops, added set on accident!
-        public decimal Salary { get; } // should this be domain modeled?
 
-        public SophisticatedEmployee(ZipCode zipCode, decimal salary)
+        public SophisticatedEmployee(ZipCode zipCode)
         {
             ZipCode = zipCode;
-            Salary = salary;
+        }
+
+        public override string ToString()
+        {
+            return $"SophisticatedEmployee(zip: {ZipCode})";
         }
     }
 }
