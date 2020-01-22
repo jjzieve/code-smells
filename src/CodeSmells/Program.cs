@@ -24,7 +24,7 @@ namespace CodeSmells
             // Console.WriteLine($"Better dc2: {betterDc2.AddStuffToPropB(evilPropB)}");
 
             /* PrimitiveObsession Examples */
-            // var primitiveEmployee
+            var primitiveEmployee = new PrimitiveEmployee("92126", -0.15M);
         }
     }
 }

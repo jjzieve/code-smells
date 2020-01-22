@@ -5,6 +5,7 @@ namespace CodeSmells
     public class PrimitiveEmployee
     {
         public string ZipCode { get; set; } // woops, added set on accident!
+        // https://enterprisecraftsmanship.com/posts/functional-c-primitive-obsession/
         public decimal Salary { get; } // should this be domain modeled?
 
         public PrimitiveEmployee(string zipCode, decimal salary)
