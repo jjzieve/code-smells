@@ -24,27 +24,41 @@ namespace CodeSmells
             // Console.WriteLine($"Better dc2: {betterDc2.AddStuffToPropB(evilPropB)}");
 
             /* PrimitiveObsession Examples */
-            try
-            {
-                // var primitiveEmployee = new PrimitiveEmployee("blah");
-                var primitiveEmployee = new PrimitiveEmployee("92126");
-                Console.WriteLine(primitiveEmployee);
-                primitiveEmployee.ZipCode = "Not a zip code!";
-                Console.WriteLine(primitiveEmployee);
+            // try
+            // {
+            //     // var primitiveEmployee = new PrimitiveEmployee("blah");
+            //     var primitiveEmployee = new PrimitiveEmployee("92126");
+            //     Console.WriteLine(primitiveEmployee);
+            //     primitiveEmployee.ZipCode = "Not a zip code!";
+            //     Console.WriteLine(primitiveEmployee);
 
-                // var zipCode = new ZipCode("blah");
-                var zipCode = new ZipCode("92126");
-                var sophisticatedEmployee = new SophisticatedEmployee(zipCode);
-                Console.WriteLine(sophisticatedEmployee);
-                // sophisticatedEmployee.ZipCode = "Not a zip code!";
-                // sophisticatedEmployee.ZipCode = new ZipCode("Not a zip code!");
-                sophisticatedEmployee.ZipCode = new ZipCode("92126-1234");
-                Console.WriteLine(sophisticatedEmployee);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
+            //     // var zipCode = new ZipCode("blah");
+            //     var zipCode = new ZipCode("92126");
+            //     var sophisticatedEmployee = new SophisticatedEmployee(zipCode);
+            //     Console.WriteLine(sophisticatedEmployee);
+            //     // sophisticatedEmployee.ZipCode = "Not a zip code!";
+            //     // sophisticatedEmployee.ZipCode = new ZipCode("Not a zip code!");
+            //     sophisticatedEmployee.ZipCode = new ZipCode("92126-1234");
+            //     Console.WriteLine(sophisticatedEmployee);
+            // }
+            // catch (Exception e)
+            // {
+            //     Console.WriteLine(e.Message);
+            // }
+
+            /* MessageChain Examples */
+            var eng = new Department("Engineering", "Point-haired boss");
+            var alice = new Employee("Alice", eng);
+            Console.WriteLine(alice.Department.Manager);
+
+            var dilbert = new Employee("Dilbert", eng);
+            // pointy gets fired!
+            eng.Manager = null;
+            // Console.WriteLine(dilbert.Department.Manager);
+
+            var wally = new BetterEmployee("Wally", eng);
+            Console.WriteLine(wally.Manager);
+
         }
     }
 }
