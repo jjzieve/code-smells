@@ -1,4 +1,4 @@
-// A.K.A the Law of Demeter
+// AKA the Law of Demeter
 // Its about the encapsulation, reduces coupling.
 // Refactor is "hide delegate", inverse is "remove middle-man"
 
@@ -31,11 +31,21 @@ public class BetterEmployee : Employee
     {
         get
         {
-            if (Department.Manager is null)
+            if (Department is null || Department.Manager is null)
             {
                 return "Dogbert"; //aka ceo
             }
             return Department.Manager;
         }
     }
+
+    // Another approach?
+    public static class EmployeeUtil
+    {
+        static string GetManager(Employee e)
+        {
+            return e.Department.Manager;
+        }
+    }
 }
+

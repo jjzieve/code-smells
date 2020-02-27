@@ -26,20 +26,20 @@ namespace CodeSmells
             /* PrimitiveObsession Examples */
             // try
             // {
-            //     // var primitiveEmployee = new PrimitiveEmployee("blah");
-            //     var primitiveEmployee = new PrimitiveEmployee("92126");
-            //     Console.WriteLine(primitiveEmployee);
-            //     primitiveEmployee.ZipCode = "Not a zip code!";
-            //     Console.WriteLine(primitiveEmployee);
+                // var primitiveEmployee = new PrimitiveEmployee(zipCode: "blah");
+                // var primitiveEmployee = new PrimitiveEmployee("92126");
+                // Console.WriteLine(primitiveEmployee);
+                // primitiveEmployee.ZipCode = "Not a zip code!";
+                // Console.WriteLine(primitiveEmployee);
 
-            //     // var zipCode = new ZipCode("blah");
-            //     var zipCode = new ZipCode("92126");
-            //     var sophisticatedEmployee = new SophisticatedEmployee(zipCode);
-            //     Console.WriteLine(sophisticatedEmployee);
-            //     // sophisticatedEmployee.ZipCode = "Not a zip code!";
-            //     // sophisticatedEmployee.ZipCode = new ZipCode("Not a zip code!");
-            //     sophisticatedEmployee.ZipCode = new ZipCode("92126-1234");
-            //     Console.WriteLine(sophisticatedEmployee);
+                // var zipCode = new ZipCode("blah");
+                // var zipCode = new ZipCode("92126");
+                // var sophisticatedEmployee = new SophisticatedEmployee(zipCode);
+                // Console.WriteLine(sophisticatedEmployee);
+                // // sophisticatedEmployee.ZipCode = "Not a zip code!";
+                // // sophisticatedEmployee.ZipCode = new ZipCode("Not a zip code!");
+                // sophisticatedEmployee.ZipCode = new ZipCode("92126-1234");
+                // Console.WriteLine(sophisticatedEmployee);
             // }
             // catch (Exception e)
             // {
@@ -48,13 +48,13 @@ namespace CodeSmells
 
             /* MessageChain Examples */
             var eng = new Department("Engineering", "Point-haired boss");
-            var alice = new Employee("Alice", eng);
+            var alice = new Employee(name: "Alice", department: eng);
             Console.WriteLine(alice.Department.Manager);
 
             var dilbert = new Employee("Dilbert", eng);
-            // pointy gets fired!
+            // // pointy gets fired!
             eng.Manager = null;
-            // Console.WriteLine(dilbert.Department.Manager);
+            Console.WriteLine(dilbert.Department.Manager);
 
             var wally = new BetterEmployee("Wally", eng);
             Console.WriteLine(wally.Manager);
